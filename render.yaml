@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: online-courtroom
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run courtroom
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COURT_SESSION_SECRET
+        generateValue: true
